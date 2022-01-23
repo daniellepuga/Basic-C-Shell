@@ -25,21 +25,29 @@ int main()
             while ((argv[i] = strtok(NULL, " \t\n\r")) != NULL);
         }
         argv[i] = NULL;
-        // execvp(argv[0], argv);
 
     pid_t process_id;
     int status;
-     if ((process_id = fork()) < 0) {
-          printf("Error, fork failed\n");
-          exit(1);
-     }
-     else if (process_id == 0) {
-          if (execvp(argv[0], argv) < 0) { 
-              printf("Error, : exec failed\n");
-              exit(1);
-          }
-     }
-     else {
+
+    if (strcmp(argv[0], "cd") == 0) {
+		if (chdir(argv[1]) == -1) {
+			perror("Error: ");
+        }
+    }
+    else if (strcmp(argv[0], "exit") == 0) {
+		exit(0);
+    }
+
+    else if ((process_id = fork()) < 0) {
+        perror("Error: ");
+        exit(1);
+    }
+    else if (process_id == 0) {
+        execvp(argv[0], argv);
+		perror("Error: ");
+	    exit(1);
+        }
+    else {
         while (wait(&status) != process_id)
             ;
      }   
