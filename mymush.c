@@ -45,20 +45,3 @@ int main()
      }   
     }
   }
-//     pid_t process_id;
-//     int status;
-//      if ((process_id = fork()) < 0) {     /* fork a child process           */
-//           printf("Error, fork failed\n");
-//           exit(1);
-//      }
-//      else if (process_id == 0) {          /* for the child process:         */
-//           if (execvp(argv[0], argv) < 0) {     /* execute the command  */
-//               printf("Erorr, exec failed\n");
-//               exit(1);
-//           }
-//      }
-//      else {                                  /* for the parent:      */
-//         while (wait(&status) != process_id)       /* wait for completion  */
-//             ;
-//      }   
-// }
