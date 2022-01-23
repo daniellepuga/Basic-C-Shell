@@ -1,7 +1,0 @@
-{
-  "git.ignoreLimitWarning": true,
-  "files.associations": {
-    "mush.C": "cpp"
-  },
-  "C_Cpp.errorSquiggles": "Disabled"
-}
